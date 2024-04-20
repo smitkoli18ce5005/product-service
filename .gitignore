@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE-specific files and folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment-specific files
+.env
+.env.*
+
+# Python virtual environment
+venv/

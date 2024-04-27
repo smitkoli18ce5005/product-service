@@ -4,9 +4,17 @@ from bson import ObjectId
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://mongodb.default.svc.cluster.local:27017/')
 db = client['product_database']
 collection = db['product_collection']
+
+
+@app.route('/', methods=['GET'])
+def health():
+    try:
+        return 'Application is running!', 201
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/product/add', methods=['POST'])
@@ -112,5 +120,5 @@ def update_product(productId):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
 
